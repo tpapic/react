@@ -13,7 +13,22 @@ const nav = [
 				to: '/customers/create'
 			}
 		]
-	}
+	},{
+		name: 'City',
+		children: [
+			{
+				name: 'City list',
+				to: '/cities'
+			},{
+				name: 'Create customer',
+				to: '/cities/create'
+			},{
+				name: 'Edit city',
+				to: '/cities/edit'
+			},
+
+		]
+	},
 	
 ];
 
