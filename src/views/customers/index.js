@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-const Customer = props => (
-    <tr>
-        <td>{props.customer.Name}</td>
-        <td>{props.customer.Surname}</td>
-        <td>{props.customer.Email}</td>
-        <td>
-            <Link to={"customers/edit/"+props.customer.Id}>Edit</Link>
-        </td>
-    </tr>
-)
+import CustomerRow from './CustomerRow'
 
 class CustomersList extends Component {
 
@@ -21,18 +11,36 @@ class CustomersList extends Component {
     }
 
     componentDidMount() {
-        axios.get('/customers')
-            .then(response => {
-                this.setState({ customers: response.data });
-            })
-            .catch(function (error){
-                console.log(error);
-            })
+        this.getAllCutomers()
     }
 
+    getAllCutomers() {
+      axios.get('/customers')
+        .then(response => {
+          this.setState({ customers: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+
+    handleDelete = id => {
+      let _this = this
+      if(id && window.confirm('Are you sure to delete this customer?')) {
+        axios.post('/deletecustomer', { Id: id })
+          .then(response => {
+            _this.getAllCutomers()
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
+    };
+
     customerList() {
-        return this.state.customers.map(function(currentCustomer, i){
-            return <Customer customer={currentCustomer} key={i} />;
+       let _this = this;
+        return this.state.customers.map(function(currentCustomer, i) {
+          return <CustomerRow customer={currentCustomer} onDelete={_this.handleDelete} key={i} />;
         })
     }
 

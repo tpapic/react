@@ -1,6 +1,6 @@
 const nav = [
 	{
-		name: 'Customer',
+		name: 'Customers',
 		children: [
 			{
 				name: 'Customer list',
@@ -8,25 +8,18 @@ const nav = [
 			},{
 				name: 'Create customer',
 				to: '/customers/create'
-			},{
-				name: 'Create city',
-				to: '/customers/create'
 			}
 		]
 	},{
-		name: 'City',
+		name: 'Bills',
 		children: [
 			{
-				name: 'City list',
-				to: '/cities'
+				name: 'Bill list',
+				to: '/bills'
 			},{
 				name: 'Create customer',
-				to: '/cities/create'
-			},{
-				name: 'Edit city',
-				to: '/cities/edit'
-			},
-
+        to: '/bills/create'
+			}
 		]
 	},
 	
