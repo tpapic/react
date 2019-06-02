@@ -25,11 +25,10 @@ class CustomersList extends Component {
     }
 
     handleDelete = id => {
-      let _this = this
       if(id && window.confirm('Are you sure to delete this customer?')) {
         axios.post('/deletecustomer', { Id: id })
           .then(response => {
-            _this.getAllCutomers()
+            this.getAllCutomers()
           })
           .catch(function (error) {
             console.log(error);
