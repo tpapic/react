@@ -10,19 +10,7 @@ const nav = [
 				to: '/customers/create'
 			}
 		]
-	},{
-		name: 'Bills',
-		children: [
-			{
-				name: 'Bill list',
-				to: '/bills'
-			},{
-				name: 'Create customer',
-        to: '/bills/create'
-			}
-		]
-	},
-	
+	}
 ];
 
 
