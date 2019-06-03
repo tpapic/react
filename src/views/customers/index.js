@@ -54,6 +54,7 @@ class CustomersList extends Component {
                             <th>Name</th>
                             <th>Surname</th>
                             <th>Email</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

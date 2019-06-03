@@ -56,6 +56,7 @@ class BillsList extends Component {
                         <tr>
                             <th>Bill number</th>
                             <th>Seller</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
