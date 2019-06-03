@@ -55,8 +55,10 @@ class Edit extends Component {
         <table className="table table-striped" style={{ marginTop: 20 }} >
           <thead>
             <tr>
-              <th>Bill number</th>
-              <th>Seller</th>
+              <th>Item Name</th>
+              <th>Product Number</th>
+              <th>Total Price</th>
+              <th>Quantity</th>
             </tr>
           </thead>
           <tbody>

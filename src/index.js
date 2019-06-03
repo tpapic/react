@@ -12,7 +12,6 @@ axios.defaults.baseURL = 'http://www.fulek.com/nks/api/aw';
 
 axios.interceptors.request.use(function (config) {
   let token = auth.getToken()
-  console.log(token)
   config.headers.Authorization = 'Bearer ' + token;
 
   return config;
