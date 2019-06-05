@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Form } from 'react-bootstrap';
 
 class Create extends Component {
 
@@ -11,6 +12,7 @@ class Create extends Component {
         this.onChangeSurname = this.onChangeSurname.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeTelephone = this.onChangeTelephone.bind(this);
+        this.onChangeCity = this.onChangeCity.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -18,8 +20,23 @@ class Create extends Component {
             Surname: '',
             Email: '',
             Telephone: '',
+            Cities: [],
             CityId: null
         }
+    }
+
+    componentDidMount() {
+      this.getAllCities();
+    }
+
+    getAllCities() {
+      axios.get('/cities')
+        .then(response => {
+          this.setState({ Cities: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
     }
 
     onChangeName(e) {
@@ -46,6 +63,12 @@ class Create extends Component {
         });
     }
 
+    onChangeCity(e) {
+        this.setState({
+            CityId: e.target.value
+        });
+    }
+
     onSubmit(e) {
         e.preventDefault();
         
@@ -56,7 +79,7 @@ class Create extends Component {
             Surname: this.state.Surname,
             Email: this.state.Email,
             Telephone: this.state.Telephone,
-            CityId: 1
+            CityId: this.state.CityId
         }
 
         axios.post('/addcustomer', newCustomer)
@@ -116,6 +139,18 @@ class Create extends Component {
                                 onChange={this.onChangeTelephone}
                                 />
                     </div>
+
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>Select city: </Form.Label>
+                <Form.Control as="select" onChange={this.onChangeCity}>
+                  <option>Choose...</option>
+                  {
+                    this.state.Cities.map((c, i) => {
+                      return <option key={i} value={c.Id}>{c.Name}</option>
+                    })
+                  }
+                </Form.Control>
+              </Form.Group>
                     
 
                     <div className="form-group">
