@@ -4,9 +4,11 @@ import Login from "./views/login";
 import CustomerList from "./views/customers/index";
 import CustomerCreate from "./views/customers/create";
 
-import BillsList from "./views/customers/bills/index";
-import BillCreate from "./views/customers/bills/create";
-import BillItems from "./views/customers/bills/items";
+import BillsList from "./views/bills/index";
+import BillCreate from "./views/bills/create";
+import BillItems from "./views/bills/items";
+
+import ItemCreate from "./views/items/create"
 
 
 const routes = [
@@ -38,6 +40,10 @@ const routes = [
     name: "BillItems",
     path: "/customers/bills/:billId/items",
     component: BillItems
+  }, {
+    name: "ItemCreate",
+    path: "/customers/bills/:billId/items/create",
+    component: ItemCreate
   },
 ];
 

@@ -28,7 +28,7 @@ class BillItems extends Component {
   }
 
   handleDelete = id => {
-    if (id && window.confirm('Are you sure to delete this bill?')) {
+    if (id && window.confirm('Are you sure to delete this item?')) {
       axios.post('/deletebill', { id: String(id) })
         .then(response => {
           this.getAllCustomerBills()
@@ -50,7 +50,7 @@ class BillItems extends Component {
     return (
       <div>
         <h3>Bills List</h3>
-        <Link className="btn btn-primary btn-lg" to={"/customers/" + this.state.billId + "/items/create"}>Create bill</Link>
+        <Link className="btn btn-primary btn-lg" to={"/customers/bills/" + this.state.billId + "/items/create"}>Create item</Link>
         <table className="table table-striped" style={{ marginTop: 20 }} >
           <thead>
             <tr>
