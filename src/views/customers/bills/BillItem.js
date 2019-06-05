@@ -17,7 +17,6 @@ class BillItem extends Component {
         <td>{props.item.TotalPrice}</td>
         <td>{props.item.Quantity}</td>
         <td>
-          <Link className="btn btn-secondary btn-sm" to={"item/" + props.item.Id}>Edit</Link>
           <button className="ml-1 btn btn-danger btn-sm" onClick={() => props.onDelete(props.item.Id)}>Delete</button>
         </td>
       </tr>

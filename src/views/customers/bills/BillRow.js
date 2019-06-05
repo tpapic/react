@@ -15,7 +15,7 @@ class BillRow extends Component {
         <td>{props.bill.BillNumber}</td>
         <td>{props.bill.Seller.Name} {props.bill.Seller.Surname}</td>
         <td>
-          <Link className="btn btn-secondary btn-sm" to={"/bills/" + props.bill.Id + "/edit"}>Edit</Link>
+          <Link className="btn btn-secondary btn-sm" to={"/customers/bills/" + props.bill.Id + "/items"}>Items</Link>
           <button className="ml-1 btn btn-danger btn-sm" onClick={() => props.onDelete(props.bill.Id)}>Delete</button>
         </td>
       </tr>

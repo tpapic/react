@@ -50,7 +50,7 @@ class BillsList extends Component {
         return (
             <div>
                 <h3>Bills List</h3>
-                <Link className="btn btn-primary btn-lg" to={"/bills/create"}>Create bill</Link>
+                <Link className="btn btn-primary btn-lg" to={"/customers/" + this.state.customerId +"/bills/create"}>Create bill</Link>
                 <table className="table table-striped" style={{ marginTop: 20 }} >
                     <thead>
                         <tr>

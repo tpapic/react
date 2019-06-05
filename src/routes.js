@@ -4,8 +4,9 @@ import Login from "./views/login";
 import CustomerList from "./views/customers/index";
 import CustomerCreate from "./views/customers/create";
 
-import BillsList from "./views/bills/index";
-import BillEdit from "./views/bills/edit";
+import BillsList from "./views/customers/bills/index";
+import BillCreate from "./views/customers/bills/create";
+import BillItems from "./views/customers/bills/items";
 
 
 const routes = [
@@ -30,9 +31,13 @@ const routes = [
     path: "/customers/:customerId/bills",
     component: BillsList
   },{
-    name: "BillEdit",
-    path: "/bills/:billId/edit",
-    component: BillEdit
+    name: "BillCreate",
+    path: "/customers/:customerId/bills/create",
+    component: BillCreate
+  },{
+    name: "BillItems",
+    path: "/customers/bills/:billId/items",
+    component: BillItems
   },
 ];
 
