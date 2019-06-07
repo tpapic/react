@@ -15,6 +15,8 @@ class CustomerRow extends Component {
         <td>{props.customer.Name}</td>
         <td>{props.customer.Surname}</td>
         <td>{props.customer.Email}</td>
+        <td>{props.customer.CityName}</td>
+        <td>{props.customer.StateName}</td>
         <td>
           <Link className="btn btn-secondary btn-sm" to={"customers/" + props.customer.Id + "/bills" }>Bills</Link>
           <button className="ml-1 btn btn-danger btn-sm" onClick={() => props.onDelete(props.customer.Id)}>Delete</button>

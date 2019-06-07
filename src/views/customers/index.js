@@ -12,7 +12,9 @@ class CustomersList extends Component {
       super(props);
 
       this.state = {
-        customers: [], 
+        customers: [],
+        cities: [],
+        states: [], 
         pageSize: 10, 
         currentPage: 1 
       }
@@ -20,12 +22,34 @@ class CustomersList extends Component {
 
     componentDidMount() {
         this.getAllCutomers()
+        this.getAllCities()
+        this.getAllStates()
     }
 
     getAllCutomers() {
       axios.get('/customers')
         .then(response => {
           this.setState({ customers: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+
+    getAllCities() {
+      axios.get('/cities')
+        .then(response => {
+          this.setState({ cities: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+
+    getAllStates() {
+      axios.get('/states')
+        .then(response => {
+          this.setState({ states: response.data });
         })
         .catch(function (error) {
           console.log(error);
@@ -46,10 +70,28 @@ class CustomersList extends Component {
 
     customerList() {
        let _this = this;
-       let customers = this.paginate(this.state.customers, this.state.currentPage, this.state.pageSize);
+       let mapCustomers = this.mappingCustomerCitiesStates(this.state.customers, this.state.cities, this.state.states);
+      let customers = this.paginate(mapCustomers, this.state.currentPage, this.state.pageSize);
        return customers.map(function(currentCustomer, i) {
           return <CustomerRow customer={currentCustomer} onDelete={_this.handleDelete} key={i} />;
        })
+    }
+
+    mappingCustomerCitiesStates(customers, cities, states) {
+      const mappingCustomers = []
+      customers.map((customer, i) => {
+        cities.map((city, i) => {
+          states.map((state, i) => {
+            const newCustomer = customer;
+            if (newCustomer.CityId == city.Id && city.StateId == state.Id) {
+              newCustomer.CityName = city.Name;
+              newCustomer.StateName = state.Name
+              mappingCustomers.push(newCustomer);
+            }
+          });
+        });
+      });
+      return mappingCustomers;
     }
 
     paginate = (allItems, pageNumber, pageSize) => {
@@ -101,6 +143,8 @@ class CustomersList extends Component {
                             <th>Name</th>
                             <th>Surname</th>
                             <th>Email</th>
+                            <th>City</th>
+                            <th>State</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
