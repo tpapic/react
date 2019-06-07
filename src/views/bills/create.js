@@ -123,12 +123,12 @@ class Create extends Component {
     render() {
         return (
             <div style={{marginTop: 10}}>
-              <Link className="btn btn-primary btn-lg" to={"/"}>Bills lists</Link>
+              <Link className="btn btn-primary btn-lg" to={"/customers/" + this.state.CustomerId + "/bills"}>Bills lists</Link>
                 <h3>Create Bill</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group"> 
                         <label>Bill number: </label>
-                        <input  type="text"
+                        <input  type="number"
                                 className="form-control"
                                 value={this.state.BillNumber}
                                 onChange={this.onChangeBillNumber}

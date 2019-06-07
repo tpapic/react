@@ -18,7 +18,7 @@ class BillsList extends Component {
     }
 
     getAllCustomerBills() {
-      axios.get('/customerbills/101')
+      axios.get('/customerbills/' + this.state.customerId)
         .then(response => {
           this.setState({ bills: response.data });
         })

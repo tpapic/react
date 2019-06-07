@@ -124,7 +124,7 @@ class Create extends Component {
                     <div className="form-group">
                         <label>Email: </label>
                         <input 
-                                type="text" 
+                                type="email" 
                                 className="form-control"
                                 value={this.state.Email}
                                 onChange={this.onChangeEmail}
